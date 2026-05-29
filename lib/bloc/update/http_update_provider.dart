@@ -94,12 +94,9 @@ class DeviceConfigUpdateProvider extends HttpUpdateProvider {
         expectedVersion,
       );
 
-  @override
+ @override
   Future<UpdateState?> update() async {
-    var etag = await internalUpdate();
-    if (etag != null) {
-      return DeviceConfigUpdateRetrieved(etag);
-    }
+    logInfo("Device config auto-update DISABLED (dev mode)");
     return null;
   }
 }
